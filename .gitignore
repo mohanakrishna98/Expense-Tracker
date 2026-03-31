@@ -1,0 +1,7 @@
+Set-Content .gitignore "__pycache__/
+*.pyc
+.venv/
+.env
+test.db
+.pytest_cache/
+*.egg-info/"
