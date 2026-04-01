@@ -2,7 +2,7 @@ import pytest
 from datetime import date
 # Eg
 SAMPLE = {"description": "Walmart", "amount": 45.50, "date": "2026-03-01"}
-
+#client taken from conftest.py
 def create_one(client, payload=None):
     """Creates single expense and returns the response."""
     return client.post("/expenses", json=payload or SAMPLE).json()
