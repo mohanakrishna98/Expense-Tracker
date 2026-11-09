@@ -1,0 +1,16 @@
+name: Weekday 10:31 AM ET Runner
+
+on:
+  repository_dispatch:
+    types: [weekday-1031-run]
+  workflow_dispatch: # Optional: allows manual runs from the GitHub Actions tab
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run script
+        run: python scheduler.py
