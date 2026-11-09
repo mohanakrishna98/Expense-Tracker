@@ -3,14 +3,32 @@ name: Weekday 10:31 AM ET Runner
 on:
   repository_dispatch:
     types: [weekday-1031-run]
-  workflow_dispatch: # Optional: allows manual runs from the GitHub Actions tab
+  workflow_dispatch: 
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    
+    # Required permissions to allow the workflow to push commits back to the repo
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
       - name: Run script
-        run: python scheduler.py
+        run: python test_script.py
+
+      - name: Commit and push generated file
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git commit -m "Add automated test schedule file" || echo "No changes to commit"
+          git push

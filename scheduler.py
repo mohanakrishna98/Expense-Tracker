@@ -14,6 +14,7 @@ def create_scheduled_file():
 
   # 3. Construct the filename following your pattern
   filename = f"test schedule {date_str} {time_str}.txt"
+  content = f"Job successfully executed!\nTimestamp: {date_str} {now.strftime('%H:%M:%S')}"
   file_path = os.path.join(output_folder, filename)
 
   # 4. Write content to the file
