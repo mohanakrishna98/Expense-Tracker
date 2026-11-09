@@ -23,7 +23,7 @@ jobs:
           python-version: '3.10'
 
       - name: Run script
-        run: python test_script.py
+        run: python scheduler.py
 
       - name: Commit and push generated file
         run: |
